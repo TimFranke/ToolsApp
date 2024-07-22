@@ -12,14 +12,7 @@
     <tbody>
         @foreach (var car in cars)
         {
-            <tr>
-                <td>@car.Id</td>
-                <td>@car.Make</td>
-                <td>@car.Model</td>
-                <td>@car.Year</td>
-                <td>@car.Color</td>
-                <td>@car.Price</td>
-            </tr>
+            <CarViewRow car="@car" />
         }
     </tbody>
 </table>
