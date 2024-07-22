@@ -1,14 +1,29 @@
 ﻿@page "/car-tool"
+@rendermode InteractiveAuto
 
 <ToolHeader HeaderText="Car Tool" />
 
 <CarTable cars="@cars" />
 
+<CarForm ButtonText="Add Car" OnSubmitCar="AddCar" />
 
 @code {
-    IEnumerable<ICar> cars = new List<ICar>
+    List<ICar> cars = new List<ICar>
     {
         new Car { Id = 1, Make="Pontiac", Model="Grand Am", Year=2008, Color="Silver", Price=14000},
         new Car { Id = 2, Make="Honda", Model="Ridgeline", Year=2017, Color="Black", Price=42456},
     };
+
+    private void AddCar(INewCar newCar)
+    {
+        cars.Add(new Car
+            {
+                Id = cars.Any() ? cars.Max(c => c.Id) + 1 : 1,
+                Make = newCar.Make,
+                Model = newCar.Model,
+                Year = newCar.Year,
+                Color = newCar.Color,
+                Price = newCar.Price
+            });
+    }
 }
