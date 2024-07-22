@@ -1,13 +1,23 @@
-﻿<tr>
-    <td>@car.Id</td>
-    <td>@car.Make</td>
-    <td>@car.Model</td>
-    <td>@car.Year</td>
-    <td>@car.Color</td>
-    <td>@car.Price</td>
-</tr>
+﻿@if (car is null)
+{
+    <tr>
+        <td colspan="6">No car data</td>
+    </tr>
+}
+else
+{
+
+    <tr>
+        <td>@car.Id</td>
+        <td>@car.Make</td>
+        <td>@car.Model</td>
+        <td>@car.Year</td>
+        <td>@car.Color</td>
+        <td>@car.Price</td>
+    </tr>
+}
 
 @code {
     [Parameter]
-    public ICar car { get; set; }
+    public ICar? car { get; set; }
 }
