@@ -1,16 +1,28 @@
 ﻿@page "/color-tool"
+@rendermode InteractiveAuto
 
 <ToolHeader HeaderText="@title" />
 
 <ColorList colors="@colors" />
+<ColorForm ButtonText="Add Color" OnSubmitColor="AddColor" />
 
 @code {
     string title = "Color Tool";
 
-    IEnumerable<IColor> colors = new List<IColor>
+    List<IColor> colors = new List<IColor>
     {
         new Color { Name = "red", HexCode="ff0000" },
         new Color { Name = "green", HexCode="00ff00" },
         new Color { Name = "blue", HexCode="0000ff" },
     };
+
+    private void AddColor(INewColor newColor)
+    {
+        colors.Add(new Color
+            {
+                Id = colors.Any() ? colors.Max(c => c.Id) + 1 : 1,
+                Name = newColor.Name,
+                HexCode = newColor.HexCode
+            });
+    }
 }

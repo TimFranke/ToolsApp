@@ -1,8 +1,12 @@
 ﻿namespace ToolsApp.Models;
 
-public class Color : IColor
+public class NewColor : INewColor
 {
-    public int Id { get; set; }
     public required string Name { get; set; }
     public required string HexCode { get; set; }
+}
+
+public class Color : NewColor, IColor
+{
+    public int Id { get; set; }
 }
