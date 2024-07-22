@@ -2,13 +2,7 @@
 
 <ToolHeader HeaderText="@title" />
 
-<ul>
-    @foreach (var color in colors)
-    {
-        <li>@color.Name - @color.HexCode</li>
-    }
-</ul>
-
+<ColorList colors="@colors" />
 
 @code {
     string title = "Color Tool";
