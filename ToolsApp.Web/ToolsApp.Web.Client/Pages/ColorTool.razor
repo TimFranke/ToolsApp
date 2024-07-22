@@ -1,8 +1,7 @@
 ﻿@page "/color-tool"
 
-<header>
-    <h3>Color Tool</h3>
-</header>
+<ToolHeader HeaderText=@title />
+
 <ul>
     @foreach (var color in colors)
     {
@@ -12,6 +11,8 @@
 
 
 @code {
+    string title = "Color Tool";
+
     IEnumerable<IColor> colors = new List<IColor>
     {
         new Color { Name = "red", HexCode="ff0000" },
