@@ -3,17 +3,17 @@
 
 <ToolHeader HeaderText="@title" />
 
-<ColorList colors="@colors" />
-<ColorForm ButtonText="Add Color" OnSubmitColor="AddColor" />
+<ColorList colors="@colors" OnDeleteColor="@DeleteColor"/>
+<ColorForm ButtonText="Add Color" OnSubmitColor="@AddColor" />
 
 @code {
     string title = "Color Tool";
 
     List<IColor> colors = new List<IColor>
     {
-        new Color { Name = "red", HexCode="ff0000" },
-        new Color { Name = "green", HexCode="00ff00" },
-        new Color { Name = "blue", HexCode="0000ff" },
+        new Color { Id=1, Name = "red", HexCode="ff0000" },
+        new Color { Id=2,Name = "green", HexCode="00ff00" },
+        new Color { Id=3,Name = "blue", HexCode="0000ff" },
     };
 
     private void AddColor(INewColor newColor)
@@ -24,5 +24,10 @@
                 Name = newColor.Name,
                 HexCode = newColor.HexCode
             });
+    }
+
+    private void DeleteColor(int ColorId)
+    {
+        colors.RemoveAll(c => c.Id == ColorId);
     }
 }

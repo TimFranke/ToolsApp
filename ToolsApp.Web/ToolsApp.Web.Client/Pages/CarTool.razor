@@ -3,7 +3,7 @@
 
 <ToolHeader HeaderText="Car Tool" />
 
-<CarTable cars="@cars" />
+<CarTable cars="@cars" SubmitDeleteCar="DeleteCar" />
 
 <CarForm ButtonText="Add Car" OnSubmitCar="AddCar" />
 
@@ -25,5 +25,10 @@
                 Color = newCar.Color,
                 Price = newCar.Price
             });
+    }
+
+    private void DeleteCar(ICar car)
+    {
+        cars.Remove(car);
     }
 }

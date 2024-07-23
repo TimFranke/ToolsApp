@@ -7,12 +7,13 @@
             <th>Year</th>
             <th>Color</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var car in cars)
         {
-            <CarViewRow car="@car" />
+            <CarViewRow car="@car" OnSubmitDeleteCar="SubmitDeleteCar" />
         }
     </tbody>
 </table>
@@ -20,4 +21,8 @@
 @code {
     [Parameter]
     public IEnumerable<ICar> cars { get; set; } = new List<Car>();
+
+    [Parameter]
+    public EventCallback<ICar> SubmitDeleteCar { get; set; }
+
 }

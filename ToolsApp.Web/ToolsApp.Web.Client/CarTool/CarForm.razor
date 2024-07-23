@@ -2,7 +2,7 @@
 <form>
     <label>
         Make:
-        <input type="text" @bind="@carForm.Make"/>
+        <input type="text" @bind="@carForm.Make" />
     </label>
     <label>
         Model:
@@ -10,15 +10,15 @@
     </label>
     <label>
         Year:
-        <input type="text" @bind="@carForm.Year"/>
+        <input type="text" @bind="@carForm.Year" />
     </label>
     <label>
         Color:
-        <input type="text" @bind="@carForm.Color"/>
+        <input type="text" @bind="@carForm.Color" />
     </label>
     <label>
         Price:
-        <input type="text" @bind="@carForm.Price"/>
+        <input type="text" @bind="@carForm.Price" />
     </label>
 
     <button type="button" @onclick="SubmitCar">@ButtonText</button>
@@ -36,10 +36,10 @@
         await OnSubmitCar.InvokeAsync(new NewCar
             {
                 Make = carForm.Make,
-                    Model = carForm.Model,
-                    Year = int.Parse(carForm.Year),
-                    Color = carForm.Color,
-                    Price = decimal.Parse(carForm.Price)
+                Model = carForm.Model,
+                Year = int.Parse(carForm.Year),
+                Color = carForm.Color,
+                Price = decimal.Parse(carForm.Price)
             });
 
         carForm.Make = "";

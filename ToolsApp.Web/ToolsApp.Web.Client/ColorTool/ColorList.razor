@@ -1,7 +1,7 @@
 ﻿<ul>
     @foreach (var color in colors)
     {
-        <li>@color.Name - @color.HexCode</li>
+        <li>@color.Name - @color.HexCode | <button type="button" @onclick="SubmitDeleteColor">Delete</button></li>
     }
 </ul>
 
@@ -9,4 +9,13 @@
 @code {
     [Parameter]
     public IEnumerable<IColor> colors { get; set; } = new List<Color>();
+
+    [Parameter]
+    public EventCallback<int> OnDeleteColor { get; set; }
+
+    private async Task SubmitDeleteColor()
+    {
+        // TODO: Change the hard-coded 1 to the actual Id
+        await OnDeleteColor.InvokeAsync(1);
+    }
 }

@@ -1,7 +1,7 @@
 ﻿@if (car is null)
 {
     <tr>
-        <td colspan="6">No car data</td>
+        <td colspan="7">No car data</td>
     </tr>
 }
 else
@@ -14,10 +14,22 @@ else
         <td>@car.Year</td>
         <td>@car.Color</td>
         <td>@car.Price</td>
+        <td>
+            <button type="button" @onclick="SubmitDeleteCar">Delete</button>
+        </td>
     </tr>
 }
 
 @code {
     [Parameter]
     public ICar? car { get; set; }
+
+    [Parameter]
+    public EventCallback<ICar> OnSubmitDeleteCar { get; set; }
+
+    private async Task SubmitDeleteCar()
+    {
+        await OnSubmitDeleteCar.InvokeAsync(this.car);
+
+    }
 }
